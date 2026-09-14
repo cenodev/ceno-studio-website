@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ceno.studio/sitemap.xml
+Host: https://ceno.studio

@@ -1,0 +1,3 @@
+# ceno.dev is legacy — 301 redirect everything to the canonical domain.
+https://ceno.dev/* https://ceno.studio/:splat 301!
+http://ceno.dev/* https://ceno.studio/:splat 301!

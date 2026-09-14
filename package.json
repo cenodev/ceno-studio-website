@@ -1,0 +1,17 @@
+{
+  "name": "ceno-studio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ceno Studio — Onchain finance, engineered end to end. (ceno.studio)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build && node scripts/pretty-urls.mjs",
+    "preview": "vite preview --port 4173"
+  },
+  "devDependencies": {
+    "@types/node": "^26.5.1",
+    "typescript": "^5.6.3",
+    "vite": "^6.3.5"
+  }
+}
