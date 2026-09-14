@@ -31,6 +31,9 @@ export type CaseStudy = {
   status?: "IN DEVELOPMENT";
   href: string;
   visual: "symmetric" | "datadex" | "setwise";
+  card: "project-green" | "project-cyan" | "project-black";
+  meta: [string, string];
+  bullets: string[];
   context: string[];
   role: string[];
   built: string[];
@@ -52,6 +55,9 @@ export const WORK: CaseStudy[] = [
     tags: "PROTOCOL ARCHITECTURE · AMMS · GOVERNANCE · INCENTIVES · MULTI-CHAIN SYSTEMS",
     href: "/work/symmetric",
     visual: "symmetric",
+    card: "project-green",
+    meta: ["01 / DeFi", "Multi-chain"],
+    bullets: ["Protocol architecture", "Smart contracts", "Application engineering"],
     context: [
       "Symmetric needed a production AMM that could travel across networks without becoming a thin fork of a single-chain exchange.",
       "The work had to cover the full protocol surface: vaults and pools, gauges and emissions, governance, indexing, SDKs, frontends and the operational path for deploying and recovering live systems.",
@@ -95,6 +101,9 @@ export const WORK: CaseStudy[] = [
     tags: "ECOSYSTEM INFRASTRUCTURE · DEX ENGINEERING · INDEXING · ANALYTICS · FULL-STACK DELIVERY",
     href: "/work/datadex",
     visual: "datadex",
+    card: "project-cyan",
+    meta: ["02 / Ecosystem", "Vana"],
+    bullets: ["DEX interface", "Indexing + analytics", "Full-stack delivery"],
     context: [
       "Vana needed purpose-built exchange infrastructure for its data-economy assets, including DLP tokens, rather than a generic DEX dropped onto the chain.",
       "The work had to cover trading, liquidity, routing, network integration, indexing and market analytics as one delivery.",
@@ -138,6 +147,9 @@ export const WORK: CaseStudy[] = [
     href: "/work/setwise",
     visual: "setwise",
     status: "IN DEVELOPMENT",
+    card: "project-black",
+    meta: ["03 / Tokenized assets", "Original protocol"],
+    bullets: ["Protocol design", "Routing + RFQ", "Security controls"],
     context: [
       "Tokenized financial assets do not behave like a single AMM curve. Issuers, settlement rails, data sources and execution venues are fragmented.",
       "Setwise is being designed as original Ceno protocol infrastructure for that market, not as an adaptation of an existing DEX.",
@@ -175,6 +187,9 @@ export const WAYS = [
     summary: "Turn a protocol idea into a buildable technical design.",
     detail: "Architecture, financial flows, risk analysis and an implementation roadmap.",
     featured: true,
+    small: false,
+    icon: "pulse",
+    tags: ["Architecture", "Risk", "Roadmap"],
   },
   {
     number: "02",
@@ -184,6 +199,9 @@ export const WAYS = [
     detail:
       "Smart contracts, testing, integrations, interfaces, internal security review, audit support and deployment.",
     featured: false,
+    small: false,
+    icon: "build",
+    tags: ["Contracts", "Interfaces", "Launch"],
   },
   {
     number: "03",
@@ -193,6 +211,9 @@ export const WAYS = [
       "Upgrade, restructure or migrate an existing protocol without treating the surrounding system as an afterthought.",
     detail: "Contracts, permissions, integrations, state, liquidity and deployment handled together.",
     featured: false,
+    small: false,
+    icon: "swap",
+    tags: ["State", "Liquidity", "Deployment"],
   },
   {
     number: "04",
@@ -202,6 +223,9 @@ export const WAYS = [
     detail:
       "Architecture, reviews, security, roadmap decisions, audits and releases alongside your existing team.",
     featured: false,
+    small: true,
+    icon: "lead",
+    tags: ["Reviews", "Security", "Releases"],
   },
 ] as const;
 

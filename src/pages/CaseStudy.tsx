@@ -29,6 +29,8 @@ function CaseStudyBody({ work }: { work: NonNullable<ReturnType<typeof workBySlu
     <>
       <section className="case-hero" id="top">
         <div className="hero-grid" aria-hidden="true"></div>
+        <div className="hero-orb hero-orb-one" aria-hidden="true"></div>
+        <div className="hero-orb hero-orb-two" aria-hidden="true"></div>
         <div className="case-hero-copy reveal">
           <Link className="case-back" to="/#work">
             ← Back to work

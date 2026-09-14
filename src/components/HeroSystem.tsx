@@ -52,9 +52,9 @@ export function HeroSystem() {
         </div>
       </div>
       <div className="system-footer">
-        <span>INDEPENDENT STUDIO</span>
-        <span>PROTOCOL ENGINEERING</span>
-        <span>ONCHAIN FINANCE</span>
+        <span>SECURE BY DESIGN</span>
+        <span>PROGRAMMABLE BY DEFAULT</span>
+        <span>BUILT TO SCALE</span>
       </div>
     </div>
   );

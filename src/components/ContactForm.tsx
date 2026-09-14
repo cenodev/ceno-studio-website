@@ -40,7 +40,7 @@ export function ContactForm() {
   }
 
   return (
-    <form className="contact-form reveal" onSubmit={onSubmit} noValidate>
+    <form className="contact-form reveal" onSubmit={onSubmit} noValidate data-contact-form>
       <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
       <input type="hidden" name="subject" value="New project enquiry — Ceno Studio" />
       <input type="hidden" name="from_name" value="Ceno Studio website" />
@@ -76,7 +76,7 @@ export function ContactForm() {
             required
           />
         </div>
-        <div className="form-field form-field-wide">
+        <div className="form-field">
           <label htmlFor="contact-company">
             <span>03</span> Project / company
           </label>
@@ -86,18 +86,6 @@ export function ContactForm() {
             type="text"
             placeholder="Protocol or organisation"
             autoComplete="organization"
-          />
-        </div>
-        <div className="form-field form-field-wide">
-          <label htmlFor="contact-message">
-            <span>04</span> What are you building?
-          </label>
-          <textarea
-            id="contact-message"
-            name="message"
-            rows={5}
-            placeholder="Tell me about the protocol, the problem and where you are today."
-            required
           />
         </div>
         <div className="form-field">
@@ -115,6 +103,18 @@ export function ContactForm() {
             <option value="$50,000+">$50,000+</option>
             <option value="Fractional / ongoing">Fractional / ongoing</option>
           </select>
+        </div>
+        <div className="form-field form-field-wide">
+          <label htmlFor="contact-message">
+            <span>04</span> What are you building?
+          </label>
+          <textarea
+            id="contact-message"
+            name="message"
+            rows={5}
+            placeholder="Tell me about the protocol, the problem and where you are today."
+            required
+          />
         </div>
         <div className="form-field">
           <label htmlFor="contact-timeline">
@@ -138,8 +138,8 @@ export function ContactForm() {
           By sending this form, you agree that Ceno Studio may contact you about your enquiry. See the{" "}
           <Link to="/privacy">privacy notice</Link>.
         </p>
-        <button className="form-submit" type="submit" disabled={state === "sending"}>
-          <span>{state === "sending" ? "Transmitting…" : "Send project brief"}</span>
+        <button className="form-submit" type="submit" disabled={state === "sending"} data-submit-button>
+          <span data-submit-label>{state === "sending" ? "Transmitting…" : "Send project brief"}</span>
           <span aria-hidden="true">↗</span>
         </button>
       </div>
@@ -147,6 +147,7 @@ export function ContactForm() {
         className={`form-status${state === "success" ? " is-success" : ""}${state === "error" ? " is-error" : ""}`}
         role="status"
         aria-live="polite"
+        data-form-status
       >
         {message}
       </p>

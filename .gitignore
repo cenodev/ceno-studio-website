@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .worktrees/
+reference/
 *.log
 .DS_Store
 .env
