@@ -5,19 +5,16 @@ function diagramFor(study: CaseStudy): string {
     return `
         <div class="diagram diagram-symmetric" aria-hidden="true">
           <div class="diagram-grid"></div>
-          <svg class="symmetry-loop" viewBox="0 0 500 300">
-            <path d="M68 150C158 20 342 280 432 150C342 20 158 280 68 150Z" />
-            <circle class="particle" r="6">
-              <animateMotion dur="5s" repeatCount="indefinite" path="M68 150C158 20 342 280 432 150C342 20 158 280 68 150Z" />
-            </circle>
-            <circle class="particle particle-alt" r="6">
-              <animateMotion begin="-2.5s" dur="5s" repeatCount="indefinite" path="M68 150C158 20 342 280 432 150C342 20 158 280 68 150Z" />
-            </circle>
-          </svg>
-          <div class="diagram-node node-left"><b>80%</b><span>TAIKO</span></div>
-          <div class="symmetric-logo"><img src="/symmetric.svg" alt="" /></div>
-          <div class="diagram-node node-right"><b>20%</b><span>ETH</span></div>
-          <div class="diagram-caption">POOL ARCHITECTURE / MULTI-CHAIN</div>
+          <div class="architecture-map">
+            <div class="architecture-label">BALANCER V2 / PROTOCOL STACK</div>
+            <div class="architecture-flow">
+              <span>VAULT</span><i>→</i><span>POOLS</span><i>→</i><span>GOVERNANCE</span><i>→</i><span>INCENTIVES</span>
+            </div>
+            <div class="architecture-chains">
+              <span>TELOS</span><span>METER</span><span>TAIKO</span><span>ARTELA</span><span>ETHERLINK</span>
+            </div>
+          </div>
+          <div class="diagram-caption">FIVE NETWORKS / ONE OPERATED SYSTEM</div>
         </div>`;
   }
 
@@ -65,16 +62,17 @@ function tagLine(items: string[]): string {
     .join("<i></i>");
 }
 
+function recordRows(study: CaseStudy): string {
+  return study.records
+    .map((record) => `<div><dt>${record.k}</dt><dd>${record.v}</dd></div>`)
+    .join("\n                ");
+}
+
 export function renderWorkCards(): string {
-  return caseStudies
+  const completed = caseStudies
+    .filter((study) => study.status === "LIVE")
     .map((study) => {
-      const inDev = study.status !== "LIVE";
-      const metaStatus = inDev
-        ? `<span class="status-label"><i></i>${study.status}</span>`
-        : `<span>SYSTEM / LIVE</span>`;
-      const titleStatus = inDev
-        ? `<span class="status-label status-label-dark"><i></i>${study.status}</span>`
-        : "";
+      const source = study.links.find((link) => link.key === "Source code");
       const copy = study.cardCopy
         .map((p) => `<p>${p}</p>`)
         .join("\n          ");
@@ -82,30 +80,56 @@ export function renderWorkCards(): string {
       return `
           <article class="work-card project-${study.slug} reveal">
             <div class="work-card-visual">
-              <div class="project-meta"><span>${study.index} / ${study.category.toUpperCase()}</span>${metaStatus}</div>
+              <div class="project-meta"><span>${study.index} / ${study.category.toUpperCase()}</span><span>LIVE</span></div>
               ${diagramFor(study)}
             </div>
             <div class="work-card-copy">
               <div>
-                <div class="project-title-row"><h3>${displayName(study)}</h3>${titleStatus}</div>
+                <div class="project-title-row"><h3>${displayName(study)}</h3></div>
                 ${copy}
+                <dl class="project-record">
+                  ${recordRows(study)}
+                </dl>
               </div>
               <div class="work-card-bottom">
                 <div class="tag-line">${tagLine(study.tags)}</div>
-                <a class="project-link" href="${study.route}">View project <span aria-hidden="true">↗</span></a>
+                <div class="project-actions">
+                  <a class="project-link" href="${study.route}">Project record <span aria-hidden="true">↗</span></a>
+                  ${source ? `<a class="project-link" href="${source.href}" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a>` : ""}
+                </div>
               </div>
             </div>
           </article>`;
     })
     .join("\n");
+
+  const building = caseStudies.find((study) => study.status === "IN DEVELOPMENT");
+  if (!building) return completed;
+
+  return `${completed}
+          <article class="building-now reveal">
+            <div class="building-now-heading">
+              <div>
+                <span class="building-now-label">Building now</span>
+                <h3>${displayName(building)}</h3>
+              </div>
+              <span class="status-label"><i></i>${building.status}</span>
+            </div>
+            <p>${building.cardCopy[0]}</p>
+            <dl class="project-record project-record-dark">
+              ${recordRows(building)}
+            </dl>
+            <div class="building-now-footer">
+              <div class="tag-line">${tagLine(building.tags)}</div>
+              <a class="project-link project-link-dark" href="${building.route}">View development note <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>`;
 }
 
 function renderLinks(study: CaseStudy): string {
   return study.links
     .map((link) => {
-      const value = link.href
-        ? `<a href="${link.href}" target="_blank" rel="noopener noreferrer">${link.label} <span aria-hidden="true">↗</span></a>`
-        : `<span class="nolink">${link.label}</span>`;
+      const value = `<a href="${link.href}" target="_blank" rel="noopener noreferrer">${link.label} <span aria-hidden="true">↗</span></a>`;
       const note = link.note ? `<span class="note">${link.note}</span>` : "";
       return `<li><span class="k">${link.key}</span>${value}${note}</li>`;
     })
@@ -163,6 +187,21 @@ export function renderCasePage(slug: string): string {
     )
     .join("\n");
 
+  const linksSection = study.links.length
+    ? `
+        <section class="case-section case-section-dark">
+          <div class="case-section-inner reveal">
+            <div class="section-kicker"><span>06</span> Verifiable links</div>
+            <div class="case-body">
+              <h2>Product, code and references.</h2>
+              <ul class="link-list">
+                ${renderLinks(study)}
+              </ul>
+            </div>
+          </div>
+        </section>`
+    : "";
+
   return `
         <section class="case-hero" id="top">
           <div class="hero-grid" aria-hidden="true"></div>
@@ -189,18 +228,7 @@ export function renderCasePage(slug: string): string {
           </div>
         </section>
 ${sections}
-
-        <section class="case-section case-section-dark">
-          <div class="case-section-inner reveal">
-            <div class="section-kicker"><span>06</span> Links</div>
-            <div class="case-body">
-              <h2>Live product, source and ecosystem references.</h2>
-              <ul class="link-list">
-                ${renderLinks(study)}
-              </ul>
-            </div>
-          </div>
-        </section>
+${linksSection}
 
         <div class="capability-line reveal">
           <span class="k">What this demonstrates</span>

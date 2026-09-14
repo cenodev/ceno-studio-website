@@ -1,7 +1,7 @@
 export interface CaseLink {
   key: string;
   label: string;
-  href?: string;
+  href: string;
   note?: string;
 }
 
@@ -11,6 +11,11 @@ export interface CaseSection {
   title: string;
   paragraphs?: string[];
   bullets?: string[];
+}
+
+export interface ProjectRecord {
+  k: string;
+  v: string;
 }
 
 export interface CaseStudy {
@@ -24,7 +29,8 @@ export interface CaseStudy {
   outcome: string;
   cardCopy: string[];
   tags: string[];
-  spec: { k: string; v: string }[];
+  records: ProjectRecord[];
+  spec: ProjectRecord[];
   sections: CaseSection[];
   links: CaseLink[];
   demonstrates: string[];
@@ -41,74 +47,77 @@ export const caseStudies: CaseStudy[] = [
     titleEm: "Finance.",
     status: "LIVE",
     outcome:
-      "Built and operated a Balancer-based financial protocol across multiple networks — smart contracts, pools, governance, incentives, indexing, SDKs, frontends and deployments.",
+      "Stephen led protocol engineering and live operations for a Balancer V2-based financial protocol across Telos, Meter, Taiko, Artela and Etherlink.",
     cardCopy: [
-      "Built and operated a Balancer-based financial protocol across multiple networks, covering smart contracts, pools, governance, incentives, indexing, SDKs, frontends and deployments.",
-      "The work also led to grant-funded development for Balancer and Tezos, and custom liquidity-locking infrastructure for Taiko.",
+      "Stephen led protocol engineering and operations across the stack, from AMM contracts and governance to indexing, interfaces and production deployments.",
     ],
-    tags: [
-      "Protocol architecture",
-      "AMMs",
-      "Governance",
-      "Incentives",
-      "Multi-chain systems",
+    tags: ["AMMs", "Governance", "Incentives", "Multi-chain systems"],
+    records: [
+      { k: "Networks", v: "Telos · Meter · Taiko · Artela · Etherlink" },
+      { k: "Protocol base", v: "Balancer V2" },
+      {
+        k: "Systems shipped",
+        v: "Vault · weighted pools · stable pools · ve governance · gauges · emissions",
+      },
+      {
+        k: "External work",
+        v: "Balancer grant · Tezos grant · Taiko Trailblazers",
+      },
     ],
     spec: [
+      { k: "Lead", v: "Stephen Horsfall" },
       { k: "Role", v: "Protocol engineering & operations" },
-      { k: "Type", v: "Multi-chain DeFi infrastructure" },
-      { k: "Ecosystems", v: "Balancer · Tezos · Taiko" },
+      { k: "Protocol", v: "Balancer V2-based DeFi infrastructure" },
       { k: "Status", v: "Live / operated in production" },
     ],
     sections: [
       {
         num: "01",
-        kicker: "Context / challenge",
-        title: "Liquidity infrastructure for emerging networks.",
+        kicker: "Project record",
+        title: "Balancer V2 infrastructure across five networks.",
         paragraphs: [
-          "Emerging networks need production-grade liquidity infrastructure from day one — and they rarely get it from platforms built for larger chains first. Symmetric is a Balancer-based financial protocol deployed across multiple networks, giving those ecosystems deep, governable AMM infrastructure without waiting for it to arrive.",
-          "Making that work meant owning every layer around the AMM core: governance, incentives, indexing, tooling and the operational reality of running a live protocol.",
+          "Symmetric brought governable AMM infrastructure to Telos, Meter, Taiko, Artela and Etherlink. The protocol combined Balancer V2 pool architecture with the governance, incentives, indexing and interfaces required to operate it in production.",
         ],
       },
       {
         num: "02",
-        kicker: "Ceno's role",
-        title: "Built and operated end to end.",
+        kicker: "Stephen's role",
+        title: "Protocol engineering and live operations.",
         paragraphs: [
-          "Ceno designed, built and operated the protocol: architecture, smart contracts, pool infrastructure, governance, incentives, indexing, SDKs, frontends and deployments across every supported network.",
-          "The role extended past launch into live production operations, including migration and recovery work on running systems.",
+          "Stephen led protocol engineering and operations across the Symmetric stack: architecture, smart contracts, pool infrastructure, governance, incentives, indexing, SDKs, frontends and network deployments.",
+          "The work continued after launch, including migrations and recovery work on systems holding live liquidity.",
         ],
       },
       {
         num: "03",
-        kicker: "What was built",
-        title: "A complete protocol stack.",
+        kicker: "Systems shipped",
+        title: "A complete AMM stack.",
         bullets: [
-          "<strong>AMM infrastructure</strong> — Balancer-based pools, vault integrations and deployments across multiple networks.",
-          "<strong>Governance</strong> — gauges, emissions and reward distribution so communities can direct liquidity.",
-          "<strong>Incentives</strong> — programmable reward mechanisms aligned with pool strategy.",
-          "<strong>Indexing</strong> — subgraphs and data pipelines for pools, swaps and governance state.",
-          "<strong>SDKs</strong> — integration libraries for frontends and third-party builders.",
-          "<strong>Frontends</strong> — swap, pool and governance interfaces shipped with the protocol.",
+          "<strong>Vault and pools</strong> — Balancer V2 vault integrations, weighted pools and stable pools.",
+          "<strong>Governance</strong> — vote-escrowed governance, gauges and emissions distribution.",
+          "<strong>Incentives</strong> — programmable rewards connected directly to pool strategy.",
+          "<strong>Data</strong> — subgraphs and pipelines for pools, swaps and governance state.",
+          "<strong>SDKs and interfaces</strong> — integration libraries plus swap, pool and governance applications.",
+          "<strong>Deployments</strong> — network configuration, releases and production operations across five chains.",
         ],
       },
       {
         num: "04",
-        kicker: "Technical depth",
-        title: "Notable systems.",
+        kicker: "External work",
+        title: "Grants and ecosystem integrations.",
         bullets: [
-          "<strong>Governance machinery</strong> — gauges, emissions schedules and rewards wired directly into pool incentives.",
-          "<strong>Taiko liquidity lock-up</strong> — custom 80/20 TAIKO/ETH locking infrastructure with Trailblazers integration.",
-          "<strong>Grant-funded engineering</strong> — protocol development funded by Balancer and Tezos ecosystem grants.",
-          "<strong>Live operations</strong> — migration and recovery work performed on production systems with real liquidity.",
-          "<strong>Revolv extension</strong> — the same architecture extended with yield-accelerated pools, bribe-marketplace mechanics, lending integrations and additional token-economic mechanisms.",
+          "<strong>Balancer</strong> — grant-funded protocol development.",
+          "<strong>Tezos</strong> — grant-funded ecosystem development.",
+          "<strong>Taiko</strong> — custom 80/20 TAIKO/ETH locking infrastructure with Trailblazers integration.",
+          "<strong>Revolv</strong> — an extension of the architecture with yield-accelerated pools, bribe-marketplace mechanics and lending integrations.",
         ],
       },
       {
         num: "05",
-        kicker: "Outcome / status",
-        title: "Live across multiple networks.",
+        kicker: "Outcome",
+        title: "Shipped and operated in production.",
         paragraphs: [
-          "Symmetric runs in production across multiple networks, with Ceno continuing to operate the system. The work led to grant-funded development for Balancer and Tezos, custom liquidity-locking infrastructure for Taiko, and Revolv as a supporting extension of the same architecture.",
+          "Symmetric is the clearest record of Stephen's ability to own a financial protocol beyond its contracts: five deployments, live operations and ecosystem-funded engineering across the surrounding stack.",
         ],
       },
     ],
@@ -119,18 +128,12 @@ export const caseStudies: CaseStudy[] = [
         label: "github.com/symmetricfinance",
         href: "https://github.com/symmetricfinance",
       },
-      { key: "Ecosystem", label: "balancer.fi", href: "https://balancer.fi" },
+      { key: "Protocol base", label: "balancer.fi", href: "https://balancer.fi" },
       { key: "Ecosystem", label: "tezos.com", href: "https://tezos.com" },
       { key: "Ecosystem", label: "taiko.xyz", href: "https://taiko.xyz" },
     ],
-    demonstrates: [
-      "Protocol architecture",
-      "AMMs",
-      "Governance",
-      "Incentives",
-      "Multi-chain systems",
-    ],
-    summary: "Balancer-based DeFi built and operated across multiple networks.",
+    demonstrates: ["Protocol architecture", "AMMs", "Governance", "Live operations"],
+    summary: "Balancer V2-based DeFi shipped across five networks.",
   },
   {
     slug: "datadex",
@@ -141,200 +144,164 @@ export const caseStudies: CaseStudy[] = [
     titleEm: "× Vana.",
     status: "LIVE",
     outcome:
-      "Trading, liquidity and market infrastructure for the Vana blockchain, built in collaboration with the Vana Foundation.",
+      "Stephen built trading, liquidity and market-data infrastructure for the Vana blockchain in collaboration with the Vana Foundation.",
     cardCopy: [
-      "Built in collaboration with the Vana Foundation, DataDex provides trading, liquidity and market infrastructure for the Vana blockchain.",
-      "The project spans the DEX interface, pool management, routing, network integrations, subgraphs and market analytics.",
+      "Built with the Vana Foundation, DataDex combines the exchange interface, pool management, routing, indexing and analytics needed for Vana's data-token markets.",
     ],
-    tags: [
-      "Ecosystem infrastructure",
-      "DEX engineering",
-      "Indexing",
-      "Analytics",
-      "Full-stack delivery",
+    tags: ["DEX engineering", "Indexing", "Analytics", "Vana"],
+    records: [
+      { k: "Network", v: "Vana" },
+      { k: "Collaboration", v: "Vana Foundation" },
+      {
+        k: "Systems shipped",
+        v: "DEX interface · pools · routing · subgraphs · market analytics",
+      },
+      { k: "Product", v: "datadex.com" },
     ],
     spec: [
-      { k: "Role", v: "Full-stack ecosystem delivery" },
-      { k: "Type", v: "Exchange & liquidity infrastructure" },
-      { k: "Ecosystem", v: "Vana" },
+      { k: "Lead", v: "Stephen Horsfall" },
+      { k: "Role", v: "Protocol & application engineering" },
+      { k: "Network", v: "Vana" },
       { k: "Status", v: "Live" },
     ],
     sections: [
       {
         num: "01",
-        kicker: "Context / challenge",
-        title: "A new chain needs markets.",
+        kicker: "Project record",
+        title: "A market layer for Vana.",
         paragraphs: [
-          "A new L1 is only as useful as the markets running on it. Vana needed exchange and liquidity infrastructure purpose-built for its ecosystem — delivered to launch-window standards and coordinated directly with the Vana Foundation.",
-          "This is an ecosystem-delivery story: not simply another DEX, but the market layer a young network needs in place for builders and traders to arrive.",
+          "Vana needed exchange and liquidity infrastructure for its data-token ecosystem. DataDex was built for that network and coordinated directly with the Vana Foundation.",
         ],
       },
       {
         num: "02",
-        kicker: "Ceno's role",
-        title: "Built with the Vana Foundation.",
+        kicker: "Stephen's role",
+        title: "Protocol and application engineering.",
         paragraphs: [
-          "Ceno built DataDex in collaboration with the Vana Foundation, owning delivery across the full stack — contracts and pools through to the interface, indexing and analytics that make market data usable.",
+          "Stephen led delivery across the exchange interface, pool operations, routing, network integration, indexing and market analytics, working with the Vana Foundation around the ecosystem's launch requirements.",
         ],
       },
       {
         num: "03",
-        kicker: "What was built",
-        title: "Exchange infrastructure, full stack.",
+        kicker: "Systems shipped",
+        title: "Exchange infrastructure, connected end to end.",
         bullets: [
-          "<strong>DEX interface</strong> — trading and liquidity management built for the Vana ecosystem.",
-          "<strong>Pool management</strong> — pool creation, configuration and liquidity operations.",
-          "<strong>Routing</strong> — trade routing across pools for execution quality.",
-          "<strong>Network integrations</strong> — chain-level wiring for Vana, RPCs and deployment infrastructure.",
-          "<strong>Subgraphs</strong> — indexing pipelines for pools, swaps and volume.",
-          "<strong>Market analytics</strong> — surfaced market data for traders and the ecosystem.",
+          "<strong>DEX interface</strong> — trading and liquidity management for Vana data-token markets.",
+          "<strong>Pool management</strong> — pool configuration and liquidity operations.",
+          "<strong>Routing</strong> — trade routing across available pools.",
+          "<strong>Network integration</strong> — Vana chain configuration, RPCs and deployment infrastructure.",
+          "<strong>Subgraphs</strong> — indexing for pools, swaps and volume.",
+          "<strong>Market analytics</strong> — usable market data for traders and ecosystem teams.",
         ],
       },
       {
         num: "04",
-        kicker: "Technical depth",
-        title: "Delivery under ecosystem conditions.",
+        kicker: "Delivery conditions",
+        title: "Built alongside a new network.",
         bullets: [
           "<strong>Foundation collaboration</strong> — engineering coordinated with the Vana Foundation's ecosystem timeline.",
-          "<strong>Launch-window engineering</strong> — infrastructure hardened for a new network's early, fast-moving conditions.",
-          "<strong>One coherent system</strong> — contracts, indexing, frontend and analytics developed together rather than stitched from third-party parts.",
+          "<strong>Launch-window delivery</strong> — integrations tested against a fast-moving network environment.",
+          "<strong>Shared data layer</strong> — contracts, indexing and application behavior developed as one system.",
         ],
       },
       {
         num: "05",
-        kicker: "Outcome / status",
-        title: "Market infrastructure for Vana.",
+        kicker: "Outcome",
+        title: "Live at datadex.com.",
         paragraphs: [
-          "DataDex provides the trading, liquidity and market-data layer for the Vana ecosystem — a reference for what focused, full-stack ecosystem delivery looks like from a solo studio.",
+          "DataDex is live market infrastructure for the Vana ecosystem, with the product and public source repositories available below.",
         ],
       },
     ],
     links: [
+      { key: "Live product", label: "datadex.com", href: "https://datadex.com" },
+      {
+        key: "Source code",
+        label: "github.com/vanadatadex",
+        href: "https://github.com/vanadatadex",
+      },
       {
         key: "Ecosystem",
         label: "vana.org",
         href: "https://vana.org",
         note: "Vana Foundation",
       },
-      {
-        key: "Live product",
-        label: "DataDex on Vana",
-        note: "URL to be confirmed for launch listing",
-      },
     ],
-    demonstrates: [
-      "Ecosystem infrastructure",
-      "DEX engineering",
-      "Indexing",
-      "Analytics",
-      "Full-stack delivery",
-    ],
-    summary: "Exchange and liquidity infrastructure for the Vana ecosystem.",
+    demonstrates: ["DEX engineering", "Indexing", "Analytics", "Ecosystem delivery"],
+    summary: "Exchange and market infrastructure live on Vana.",
   },
   {
     slug: "setwise",
     route: "/work/setwise/",
     index: "03",
-    category: "Tokenized assets",
+    category: "Building now",
     title: "Setwise",
     titleEm: "",
     status: "IN DEVELOPMENT",
     outcome:
-      "An original Ceno protocol bringing together tokenized asset discovery, portfolio-style products, market data and multi-source execution.",
+      "An original Ceno protocol in active development, focused first on tokenized-asset discovery, market data and RFQ execution.",
     cardCopy: [
-      "An original Ceno protocol bringing together tokenized asset discovery, portfolio-style products, market data and multi-source execution.",
+      "The first public release is intentionally narrow: tokenized-asset discovery, normalized market data and RFQ execution.",
     ],
-    tags: [
-      "RWA infrastructure",
-      "Protocol design",
-      "Routing",
-      "Governance",
-      "Smart-contract security",
+    tags: ["Tokenized assets", "Market data", "RFQ execution"],
+    records: [
+      { k: "Status", v: "Active development" },
+      { k: "Current focus", v: "Discovery · market data · RFQ execution" },
+      { k: "Release", v: "Simplified public first release" },
     ],
     spec: [
-      { k: "Role", v: "Original protocol / studio-owned" },
-      { k: "Type", v: "Tokenized-asset market infrastructure" },
-      { k: "Focus", v: "Multi-issuer RWA markets" },
+      { k: "Builder", v: "Ceno Studio" },
+      { k: "Type", v: "Original protocol" },
+      { k: "Current focus", v: "Tokenized-asset markets" },
       { k: "Status", v: "In development" },
     ],
     sections: [
       {
         num: "01",
-        kicker: "Context / challenge",
+        kicker: "Problem",
         title: "Tokenized assets, fragmented markets.",
         paragraphs: [
-          "Tokenized real-world assets are fragmented across issuers and venues. Discovery is manual, execution is single-source, and portfolio-style products barely exist onchain.",
-          "Setwise is Ceno's answer: market infrastructure designed from first principles for multi-issuer tokenized assets — not an adaptation of an existing DEX.",
+          "Tokenized assets are spread across issuers and venues, making discovery, comparison and execution unnecessarily fragmented.",
         ],
       },
       {
         num: "02",
-        kicker: "Ceno's role",
-        title: "An original Ceno protocol.",
+        kicker: "Current build",
+        title: "A deliberately narrow first release.",
         paragraphs: [
-          "Setwise is designed, built and owned by Ceno. The studio runs the full scope: protocol design, market modelling, execution mechanics, security controls and the interfaces that tie them together.",
+          "Setwise is an original Ceno protocol. The current release scope concentrates on the smallest useful market layer: asset discovery, normalized market data and request-for-quote execution.",
         ],
       },
       {
         num: "03",
-        kicker: "What is being built",
-        title: "Market infrastructure for tokenized assets.",
+        kicker: "Release scope",
+        title: "What is being built now.",
         bullets: [
-          "<strong>Asset discovery</strong> — a unified view of tokenized assets across issuers.",
-          "<strong>Portfolio-style products</strong> — multi-asset constructions on top of discovered markets.",
-          "<strong>Market data</strong> — pricing and market information aggregated from multiple sources.",
-          "<strong>Multi-source execution</strong> — routing and RFQ execution across venues and counterparties.",
-          "<strong>Cross-chain settlement</strong> — settlement flows that span networks.",
-          "<strong>Governance</strong> — protocol governance designed alongside the market mechanics.",
+          "<strong>Asset discovery</strong> — a unified view of supported tokenized assets.",
+          "<strong>Market data</strong> — comparable pricing and market information.",
+          "<strong>RFQ execution</strong> — quoted execution with explicit counterparties and terms.",
+          "<strong>Protocol controls</strong> — constrained permissions and defensive execution paths.",
         ],
       },
       {
         num: "04",
-        kicker: "Technical depth",
-        title: "Notable systems.",
-        bullets: [
-          "<strong>Multi-issuer market modelling</strong> — markets normalised across issuers with different asset structures.",
-          "<strong>Routing & RFQ</strong> — execution that combines onchain routing with request-for-quote flows.",
-          "<strong>Cross-chain settlement</strong> — settlement paths across chains without collapsing into a single venue.",
-          "<strong>Security controls</strong> — smart-contract security review and defensive controls treated as core protocol features.",
+        kicker: "Engineering focus",
+        title: "Ship the working core first.",
+        paragraphs: [
+          "Broader product ideas will be documented only as they become working systems. Until then, the public record stays focused on the first release.",
         ],
       },
       {
         num: "05",
-        kicker: "Current status",
+        kicker: "Status",
         title: "In development.",
         paragraphs: [
-          "<strong>IN DEVELOPMENT.</strong> Setwise is being built toward a simplified public first release. This page carries the IN DEVELOPMENT label until the protocol is publicly live, and will be updated with launch details and links.",
+          "Setwise will remain labelled IN DEVELOPMENT until a public release and verifiable product links are available.",
         ],
       },
     ],
-    links: [
-      {
-        key: "Live product",
-        label: "Not yet launched",
-        note: "Link added at public launch",
-      },
-      {
-        key: "Source code",
-        label: "Private during development",
-        note: "Available on request",
-      },
-    ],
-    demonstrates: [
-      "RWA infrastructure",
-      "Protocol design",
-      "Routing",
-      "Governance",
-      "Smart-contract security",
-    ],
-    summary: "Tokenized-asset market infrastructure. In development.",
+    links: [],
+    demonstrates: ["Protocol design", "Tokenized assets", "RFQ execution"],
+    summary: "A focused tokenized-asset protocol in active development.",
   },
-];
-
-export const supportingWork = [
-  "Balancer",
-  "Tezos",
-  "Taiko",
-  "Vana",
-  "Revolv",
 ];

@@ -19,8 +19,8 @@ export function initIntakeForm(): void {
 
     const original = label.textContent ?? "";
     button.disabled = true;
-    label.textContent = "Transmitting…";
-    status.textContent = "Securely sending your project brief…";
+    label.textContent = "Sending…";
+    status.textContent = "Sending your project brief…";
     status.className = "form-status";
 
     try {
