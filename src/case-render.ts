@@ -1,105 +1,100 @@
 import { caseStudies, type CaseStudy } from "./content/case-studies";
 
-function tags(
-  items: string[],
-  separator = " · "
-): string {
-  return items
-    .map((t) => t.replace(/&/g, "&amp;"))
-    .join(separator)
-    .toUpperCase();
-}
-
-function visualFor(study: CaseStudy): string {
+function diagramFor(study: CaseStudy): string {
   if (study.slug === "symmetric") {
     return `
-        <div class="project-visual visual-symmetric" aria-hidden="true">
-          <div class="project-grid-lines"></div>
-          <svg class="symmetry-loop" viewBox="0 0 400 240">
-            <path d="M65 120C135 18 265 222 335 120C265 18 135 222 65 120Z" />
-            <circle class="sym-particle" r="5">
-              <animateMotion dur="4.5s" repeatCount="indefinite" path="M65 120C135 18 265 222 335 120C265 18 135 222 65 120Z" />
+        <div class="diagram diagram-symmetric" aria-hidden="true">
+          <div class="diagram-grid"></div>
+          <svg class="symmetry-loop" viewBox="0 0 500 300">
+            <path d="M68 150C158 20 342 280 432 150C342 20 158 280 68 150Z" />
+            <circle class="particle" r="6">
+              <animateMotion dur="5s" repeatCount="indefinite" path="M68 150C158 20 342 280 432 150C342 20 158 280 68 150Z" />
             </circle>
-            <circle class="sym-particle sym-particle-alt" r="5">
-              <animateMotion begin="-2.25s" dur="4.5s" repeatCount="indefinite" path="M65 120C135 18 265 222 335 120C265 18 135 222 65 120Z" />
+            <circle class="particle particle-alt" r="6">
+              <animateMotion begin="-2.5s" dur="5s" repeatCount="indefinite" path="M68 150C158 20 342 280 432 150C342 20 158 280 68 150Z" />
             </circle>
           </svg>
-          <div class="balance-node balance-node-left"><b>50%</b><span>POOL A</span></div>
-          <div class="balance-node balance-node-right"><b>50%</b><span>POOL B</span></div>
-          <div class="project-logo-frame symmetric-logo">
-            <img src="/symmetric.svg" alt="" />
-          </div>
-          <span class="visual-label">LIQUIDITY / BALANCED</span>
+          <div class="diagram-node node-left"><b>80%</b><span>TAIKO</span></div>
+          <div class="symmetric-logo"><img src="/symmetric.svg" alt="" /></div>
+          <div class="diagram-node node-right"><b>20%</b><span>ETH</span></div>
+          <div class="diagram-caption">POOL ARCHITECTURE / MULTI-CHAIN</div>
         </div>`;
   }
 
   if (study.slug === "datadex") {
     return `
-        <div class="project-visual visual-datadex" aria-hidden="true">
-          <div class="project-grid-lines"></div>
-          <div class="orbit orbit-one"></div>
-          <div class="orbit orbit-two"></div>
-          <div class="orbit orbit-three"></div>
-          <div class="project-logo-frame">
-            <div class="datadex-mark"><b>DATADEX</b><span>VANA // DEX</span></div>
-          </div>
-          <span class="visual-label">VANA / EXCHANGE INFRA</span>
+        <div class="diagram diagram-datadex" aria-hidden="true">
+          <div class="diagram-grid"></div>
+          <svg class="market-lines" viewBox="0 0 500 300">
+            <path d="M58 220 L148 166 L230 192 L326 92 L438 126" />
+            <path d="M58 220 L148 166 L230 82 L326 92 L438 126" />
+            <path d="M148 166 L230 192 L438 126" />
+          </svg>
+          <div class="market-node market-a"><b>VANA</b><span>BASE ASSET</span></div>
+          <div class="market-node market-b"><b>DAT</b><span>MARKET</span></div>
+          <div class="datadex-logo"><img src="/datadex.png" alt="" /></div>
+          <div class="market-node market-c"><b>LP</b><span>LIQUIDITY</span></div>
+          <div class="diagram-caption">TRADING / LIQUIDITY / DATA</div>
         </div>`;
   }
 
   return `
-        <div class="project-visual visual-setwise" aria-hidden="true">
-          <div class="setwise-rail"><i class="setwise-packet"></i><i class="setwise-packet setwise-packet-alt"></i></div>
-          <div class="setwise-endpoint setwise-assets"><b>ASSETS</b><span>MULTI-ISSUER</span></div>
-          <div class="project-logo-frame">
-            <div class="setwise-mark"><b>SETWISE</b><span>RWA / MARKETS</span></div>
-          </div>
-          <div class="setwise-endpoint setwise-exec"><b>EXECUTION</b><span>ROUTING + RFQ</span></div>
-          <div class="dev-stamp">IN<br />DEV</div>
-          <span class="visual-label">TOKENIZED / MULTI-SOURCE</span>
+        <div class="diagram diagram-setwise" aria-hidden="true">
+          <div class="diagram-grid"></div>
+          <div class="asset-stack stack-one"><span>ISSUER / A</span><b>RWA-01</b></div>
+          <div class="asset-stack stack-two"><span>ISSUER / B</span><b>RWA-02</b></div>
+          <div class="asset-stack stack-three"><span>ISSUER / C</span><b>RWA-03</b></div>
+          <svg class="route-lines" viewBox="0 0 500 300">
+            <path d="M96 74 L250 150 L405 74" />
+            <path d="M96 224 L250 150 L405 224" />
+          </svg>
+          <div class="diagram-core"><strong>RFQ</strong><span>ROUTER / 001</span></div>
+          <div class="execution-node execution-left">CHAIN / A</div>
+          <div class="execution-node execution-right">CHAIN / B</div>
+          <div class="diagram-caption">MULTI-SOURCE EXECUTION / CONTROLLED</div>
         </div>`;
+}
+
+function displayName(study: CaseStudy): string {
+  return `${study.title} ${study.titleEm}`.replace(/\.$/, "").trim();
+}
+
+function tagLine(items: string[]): string {
+  return items
+    .map((tag) => `<span>${tag.toUpperCase()}</span>`)
+    .join("<i></i>");
 }
 
 export function renderWorkCards(): string {
   return caseStudies
     .map((study) => {
-      const wide = study.slug === "setwise" ? " project-wide" : "";
-      const title =
-        study.slug === "setwise"
-          ? `<div class="project-title-row">
-                  <h3>Setwise</h3>
-                  <span class="status-badge status-badge-dev">In development</span>
-                </div>`
-          : `<h3>${study.title} ${study.titleEm}</h3>`;
+      const inDev = study.status !== "LIVE";
+      const metaStatus = inDev
+        ? `<span class="status-label"><i></i>${study.status}</span>`
+        : `<span>SYSTEM / LIVE</span>`;
+      const titleStatus = inDev
+        ? `<span class="status-label status-label-dark"><i></i>${study.status}</span>`
+        : "";
       const copy = study.cardCopy
         .map((p) => `<p>${p}</p>`)
-        .join("\n                ");
-      const source = study.links.find(
-        (l) => l.key === "Source code" && l.href
-      );
-      const sourceLink = source
-        ? `<a class="project-source" href="${source.href}" target="_blank" rel="noopener noreferrer">Source code <span aria-hidden="true">↗</span></a>`
-        : "";
-      const points = study.cardPoints
-        .map((p) => `<li>${p}</li>`)
-        .join("");
+        .join("\n          ");
 
       return `
-          <article class="project-card ${study.cardClass}${wide} reveal">
-            <div class="project-meta"><span>${study.index} / ${study.category}</span><span>${study.status}</span></div>
-            ${visualFor(study)}
-            <div class="project-body">
-              <div>
-                ${title}
-                ${copy}
-                <div class="project-links">
-                  <a class="project-source" href="${study.route}">View project <span aria-hidden="true">↗</span></a>
-                  ${sourceLink}
-                </div>
-              </div>
-              <ul>${points}</ul>
+          <article class="work-card project-${study.slug} reveal">
+            <div class="work-card-visual">
+              <div class="project-meta"><span>${study.index} / ${study.category.toUpperCase()}</span>${metaStatus}</div>
+              ${diagramFor(study)}
             </div>
-            <div class="project-tech">${tags(study.tags)}</div>
+            <div class="work-card-copy">
+              <div>
+                <div class="project-title-row"><h3>${displayName(study)}</h3>${titleStatus}</div>
+                ${copy}
+              </div>
+              <div class="work-card-bottom">
+                <div class="tag-line">${tagLine(study.tags)}</div>
+                <a class="project-link" href="${study.route}">View project <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
           </article>`;
     })
     .join("\n");

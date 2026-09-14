@@ -18,13 +18,11 @@ export interface CaseStudy {
   route: string;
   index: string;
   category: string;
-  cardClass: string;
   title: string;
   titleEm: string;
   status: "LIVE" | "IN DEVELOPMENT";
   outcome: string;
   cardCopy: string[];
-  cardPoints: string[];
   tags: string[];
   spec: { k: string; v: string }[];
   sections: CaseSection[];
@@ -39,7 +37,6 @@ export const caseStudies: CaseStudy[] = [
     route: "/work/symmetric/",
     index: "01",
     category: "Multi-chain DeFi",
-    cardClass: "project-green",
     title: "Symmetric",
     titleEm: "Finance.",
     status: "LIVE",
@@ -49,7 +46,6 @@ export const caseStudies: CaseStudy[] = [
       "Built and operated a Balancer-based financial protocol across multiple networks, covering smart contracts, pools, governance, incentives, indexing, SDKs, frontends and deployments.",
       "The work also led to grant-funded development for Balancer and Tezos, and custom liquidity-locking infrastructure for Taiko.",
     ],
-    cardPoints: ["Protocol architecture", "Governance & incentives", "Multi-chain operations"],
     tags: [
       "Protocol architecture",
       "AMMs",
@@ -141,7 +137,6 @@ export const caseStudies: CaseStudy[] = [
     route: "/work/datadex/",
     index: "02",
     category: "Ecosystem infrastructure",
-    cardClass: "project-cyan",
     title: "DataDex",
     titleEm: "× Vana.",
     status: "LIVE",
@@ -151,7 +146,6 @@ export const caseStudies: CaseStudy[] = [
       "Built in collaboration with the Vana Foundation, DataDex provides trading, liquidity and market infrastructure for the Vana blockchain.",
       "The project spans the DEX interface, pool management, routing, network integrations, subgraphs and market analytics.",
     ],
-    cardPoints: ["Ecosystem delivery", "DEX engineering", "Indexing & analytics"],
     tags: [
       "Ecosystem infrastructure",
       "DEX engineering",
@@ -242,7 +236,6 @@ export const caseStudies: CaseStudy[] = [
     route: "/work/setwise/",
     index: "03",
     category: "Tokenized assets",
-    cardClass: "project-black",
     title: "Setwise",
     titleEm: "",
     status: "IN DEVELOPMENT",
@@ -251,7 +244,6 @@ export const caseStudies: CaseStudy[] = [
     cardCopy: [
       "An original Ceno protocol bringing together tokenized asset discovery, portfolio-style products, market data and multi-source execution.",
     ],
-    cardPoints: ["RWA infrastructure", "Protocol design", "Routing & RFQ"],
     tags: [
       "RWA infrastructure",
       "Protocol design",
