@@ -1,0 +1,6 @@
+# Canonical domain. Keep this live after ceno.dev is pointed at the same host.
+https://ceno.dev/* https://ceno.studio/:splat 301
+http://ceno.dev/* https://ceno.studio/:splat 301
+
+# SPA fallback for case-study and privacy routes
+/*    /index.html   200
