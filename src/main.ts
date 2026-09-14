@@ -269,7 +269,12 @@ const homePage = () => {
       <section class="ecosystem" aria-labelledby="ecosystem-title">
         <div class="ecosystem-label"><span>02</span><span>ECOSYSTEM PROOF / 001</span></div>
         <div class="ecosystem-copy reveal"><h2 id="ecosystem-title">Built with leading onchain ecosystems.</h2><p>Grant-funded development, ecosystem infrastructure and custom protocol engineering.</p></div>
-        <div class="ecosystem-names" aria-label="Balancer, Tezos, Taiko and Vana"><span>BALANCER</span><i></i><span>TEZOS</span><i></i><span>TAIKO</span><i></i><span>VANA</span></div>
+        <div class="ecosystem-logos" aria-label="Balancer, Tezos, Taiko and Vana">
+          <div class="ecosystem-mark"><img src="/ecosystem-balancer.svg" alt="Balancer" /></div>
+          <div class="ecosystem-mark"><img src="/ecosystem-tezos.svg" alt="Tezos" /></div>
+          <div class="ecosystem-mark"><img src="/ecosystem-taiko.svg" alt="Taiko" /></div>
+          <div class="ecosystem-mark"><img src="/ecosystem-vana.svg" alt="Vana" /></div>
+        </div>
       </section>
 
       <section class="work section-dark" id="work">
