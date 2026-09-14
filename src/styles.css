@@ -373,6 +373,8 @@ h1 em, h2 em { color: var(--green); font-style: normal; }
 .node-right { right: 9%; animation-delay: -1.5s; }
 .symmetric-logo { position: absolute; z-index: 3; top: 50%; left: 50%; width: 128px; height: 128px; border: 2px solid var(--ink); border-radius: 50%; box-shadow: 8px 8px #080a0926; transform: translate(-50%, -50%); overflow: hidden; }
 .symmetric-logo img { width: 100%; height: 100%; object-fit: contain; }
+.datadex-logo { position: absolute; z-index: 3; top: 50%; left: 50%; width: 120px; height: 120px; border: 2px solid var(--ink); border-radius: 26px; box-shadow: 8px 8px #080a0926; transform: translate(-50%, -50%); overflow: hidden; }
+.datadex-logo img { width: 100%; height: 100%; display: block; object-fit: cover; }
 .market-lines, .route-lines { position: absolute; inset: 0; width: 100%; height: 100%; }
 .market-lines path, .route-lines path { fill: none; stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 6 7; animation: symmetryFlow 12s linear infinite; }
 .market-node { position: absolute; z-index: 2; min-width: 90px; padding: .8rem; color: var(--ink); background: var(--paper); border: 2px solid var(--ink); box-shadow: 5px 5px #080a0926; text-align: center; }
@@ -644,6 +646,7 @@ footer > p { max-width: 320px; margin: 0; color: #8d938e; font-size: .85rem; lin
   .diagram .diagram-core { width: 82px; height: 82px; }
   .diagram .diagram-core strong { font-size: 1.15rem; }
   .symmetric-logo { width: 104px; height: 104px; }
+  .datadex-logo { width: 92px; height: 92px; border-radius: 20px; }
   .diagram-node { width: 62px; height: 62px; }
   .node-left { left: 4%; }.node-right { right: 4%; }
   .market-node { min-width: 72px; padding: .55rem; }

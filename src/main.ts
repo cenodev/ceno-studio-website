@@ -192,7 +192,7 @@ const diagram = (kind: CaseStudy['slug']) => {
       <svg class="market-lines" viewBox="0 0 500 300"><path d="M58 220 L148 166 L230 192 L326 92 L438 126"/><path d="M58 220 L148 166 L230 82 L326 92 L438 126"/><path d="M148 166 L230 192 L438 126"/></svg>
       <div class="market-node market-a"><b>VANA</b><span>BASE ASSET</span></div>
       <div class="market-node market-b"><b>DAT</b><span>MARKET</span></div>
-      <div class="diagram-core"><strong>DEX</strong><span>ROUTER / 001</span></div>
+      <div class="datadex-logo"><img src="/datadex.png" alt="" /></div>
       <div class="market-node market-c"><b>LP</b><span>LIQUIDITY</span></div>
       <div class="diagram-caption">TRADING / LIQUIDITY / DATA</div>
     </div>`
