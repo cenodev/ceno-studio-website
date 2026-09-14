@@ -181,7 +181,7 @@ const diagram = (kind: CaseStudy['slug']) => {
       <div class="diagram-grid"></div>
       <svg class="symmetry-loop" viewBox="0 0 500 300"><path d="M68 150C158 20 342 280 432 150C342 20 158 280 68 150Z"/><circle class="particle" r="6"><animateMotion dur="5s" repeatCount="indefinite" path="M68 150C158 20 342 280 432 150C342 20 158 280 68 150Z"/></circle><circle class="particle particle-alt" r="6"><animateMotion begin="-2.5s" dur="5s" repeatCount="indefinite" path="M68 150C158 20 342 280 432 150C342 20 158 280 68 150Z"/></circle></svg>
       <div class="diagram-node node-left"><b>80%</b><span>TAIKO</span></div>
-      <div class="diagram-core"><strong>AMM</strong><span>BALANCED</span></div>
+      <div class="symmetric-logo"><img src="/symmetric.svg" alt="" /></div>
       <div class="diagram-node node-right"><b>20%</b><span>ETH</span></div>
       <div class="diagram-caption">POOL ARCHITECTURE / MULTI-CHAIN</div>
     </div>`
@@ -254,7 +254,11 @@ const homePage = () => {
           <div class="system-canvas">
             <div class="system-coordinates">PROTOCOL LAYER / 001<br/>GLOBAL SETTLEMENT</div>
             <svg class="network-lines" viewBox="0 0 640 480" aria-hidden="true"><path class="line-a" d="M70 360 L178 265 L302 302 L402 168 L570 98"/><path class="line-b" d="M178 265 L245 118 L402 168 L510 354"/><path class="line-c" d="M302 302 L510 354 L570 98"/><g><circle cx="70" cy="360" r="5"/><circle cx="178" cy="265" r="7"/><circle cx="245" cy="118" r="5"/><circle cx="302" cy="302" r="5"/><circle cx="402" cy="168" r="8"/><circle cx="510" cy="354" r="5"/><circle cx="570" cy="98" r="5"/></g></svg>
-            <div class="protocol-core"><span>DESIGN</span><strong>CENO</strong><span>LAUNCH</span></div>
+            <div class="system-logo-wrap">
+              <div class="logo-shadow" aria-hidden="true"></div>
+              <img src="/ceno-gradient-tile.svg" alt="" />
+              <div class="logo-index">NODE<br/>001</div>
+            </div>
             <div class="data-chip chip-one"><span>CONTRACTS</span><b>VERIFIED</b></div><div class="data-chip chip-two"><span>INTERFACES</span><b>CONNECTED</b></div><div class="data-chip chip-three"><span>STATUS</span><b>ONLINE</b></div>
           </div>
           <div class="system-footer"><span>ARCHITECTURE</span><span>SECURITY</span><span>INFRASTRUCTURE</span></div>
