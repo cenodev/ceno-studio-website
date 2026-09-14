@@ -122,7 +122,7 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     links: [
-      { key: "Live product", label: "symmetric.finance", href: "https://symmetric.finance" },
+      { key: "Live product", label: "symm.xyz", href: "https://symm.xyz" },
       {
         key: "Source code",
         label: "github.com/symmetricfinance",
