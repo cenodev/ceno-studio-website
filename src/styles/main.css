@@ -721,8 +721,9 @@ h3 em {
 }
 
 .eco-chips img {
-  width: 24px;
-  height: 24px;
+  height: 22px;
+  width: auto;
+  max-width: 110px;
   object-fit: contain;
   flex: none;
 }
